@@ -20,23 +20,23 @@ function updateCipher() {
         var char = text[i];
         var code = text.charCodeAt(i);
 
-        // CHECK: Is it an Uppercase Letter (A-Z)?
+        // Check for Uppercase Letter (A-Z) 65-90
         if (code >= 65 && code <= 90) {
-            var p = code - 65;          // Map A to 0, B to 1...
+            var p = code - 65;          // Map A to 0, B to 1... (0-25)
             var c = (p + k) % 26;       // The Shift Formula
             if (c < 0) c += 26;         // Fix negative results
             result += String.fromCharCode(c + 65); // Map back to Letter
         }
-        
-        // CHECK: Is it a Lowercase Letter (a-z)?
+         
+        // check for Lowercase Letter (a-z) 97-122
         else if (code >= 97 && code <= 122) {
             var p = code - 97;          // Map a to 0, b to 1...
-            var c = (p + k) % 26;       // The Shift Formula
+            var c = (p + k) % 26;       // The Shift Formula (c=p+k mod 26)
             if (c < 0) c += 26;         // Fix negative results
             result += String.fromCharCode(c + 97); // Map back to Letter
         }
 
-        // CHECK: Is it a Number (0-9)?
+        // check Number (0-9) 48-57
         else if (code >= 48 && code <= 57) {
             var p = code - 48;          // Map "0" to 0, "1" to 1...
             var c = (p + k) % 10;       // The Shift Formula (mod 10)
@@ -50,10 +50,10 @@ function updateCipher() {
         }
     }
 
-    // 4. Put the final message in the blue box
+    // Output result in in the blue box
     outputDiv.innerText = result;
 }
 
-// 5. Tell the browser to run the function when things change
+// Tell the browser to run the function when things change
 msgInput.oninput = updateCipher;
 shiftInput.oninput = updateCipher;
