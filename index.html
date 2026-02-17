@@ -9,26 +9,36 @@
 <body>
 
     <div class="cipher-card">
-        <h1>Shift Cipher</h1>
-        <p class="math-label">Transformation: c = (x + k) mod{26}</p>
+        <h1>Cipher Workspace</h1>
         
         <div class="input-group">
-            <label for="message">Plaintext</label>
-            <textarea id="message" placeholder="Enter message..."></textarea>
+            <label for="cipherSelect">Select Methodology</label>
+            <select id="cipherSelect">
+                <option value="">-- Choose a Cipher --</option>
+                <option value="ceasar">Ceasar (Linear Shift)</option>
+            </select>
         </div>
 
-        <div class="input-group">
-            <label for="shift">Shift Value ($k$)</label>
-            <input type="number" id="shift" value="3">
+        <div id="inputs-wrapper" style="display: none;">
+            <p class="math-label">Transformation: c = (x + k) mod{26}</p>
+            
+            <div class="input-group">
+                <label for="message">Plaintext</label>
+                <textarea id="message" placeholder="Enter message..."></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="shift">Shift Value ($k$)</label>
+                <input type="number" id="shift" value="3">
+            </div>
         </div>
 
-        <div class="output-group">
-            <label>Ciphertext</label>
+        <div id="result-wrapper" style="display: none;" class="output-group">
+            <label>Resulting Ciphertext</label>
             <div id="output" class="result-box"></div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
